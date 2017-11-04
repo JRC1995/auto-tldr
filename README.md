@@ -174,7 +174,7 @@ def generate_stopwords(POS_tagged_text):
 stopwords = generate_stopwords(Processed_text)
 ```
 
-### Partioning text into tokenized phrases using stopwords as delimeters.
+### Partitioning text into tokenized phrases using stopwords as delimeters.
 
 The result can be somewhat like n-gram parsing.
 All these partitioned phrases will serve as <b>candidate keywords</b>.
@@ -197,7 +197,7 @@ def partition_phrases(text,delimeters):
 phrase_list = partition_phrases(lemmatized_text,stopwords)
 ```
 
-### Partioning each segmented tokenizedsentences into tokenized phrases using stopwords as delimeters.
+### Partitioning each segmented tokenizedsentences into tokenized phrases using stopwords as delimeters.
 
 The tokenized segmented sentences are lemmatized before partioning.
 
