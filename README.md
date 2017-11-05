@@ -50,6 +50,9 @@ Additionally , an extended summary is posted in /r/autotldr , which acts as a pe
 The final tl ; dr must also be 70 % smaller than the original , that way there is a big gap between the original and the tl ; dr , hence only very long articles get posted on.
 
 
+### Here starts the code:
+
+
 
 ```python
 filename = 'summarytest.txt' #Enter Filename
@@ -174,7 +177,7 @@ def generate_stopwords(POS_tagged_text):
 stopwords = generate_stopwords(Processed_text)
 ```
 
-### Partitioning text into tokenized phrases using stopwords as delimeters.
+### Partioning text into tokenized phrases using stopwords as delimeters.
 
 The result can be somewhat like n-gram parsing.
 All these partitioned phrases will serve as <b>candidate keywords</b>.
@@ -197,7 +200,7 @@ def partition_phrases(text,delimeters):
 phrase_list = partition_phrases(lemmatized_text,stopwords)
 ```
 
-### Partitioning each segmented tokenizedsentences into tokenized phrases using stopwords as delimeters.
+### Partioning each segmented tokenizedsentences into tokenized phrases using stopwords as delimeters.
 
 The tokenized segmented sentences are lemmatized before partioning.
 
@@ -244,30 +247,36 @@ for word in vocabulary:
 
 ### Scoring each phrase (candidate keyword) using RAKE
 
-Furthermore the tokenized phrases are converted into a presentable format and put into the list named 
+Furthermore the unique tokenized phrases are converted into a presentable format and put into the list named 
 'keywords'
 
 
 ```python
 import numpy as np
 
-index=0
-phrase_scores = np.zeros((len(phrase_list)),dtype=np.float32)
+phrase_scores = []
 keywords = []
+phrase_vocabulary = []
 
 for phrase in phrase_list:
-    for word in phrase:
-        phrase_scores[index] += word_score[word]
-    index+=1
+    if phrase not in phrase_vocabulary:
+        phrase_score = 0
+        for word in phrase:
+            phrase_score += word_score[word]
+        phrase_scores.append(phrase_score)
+        phrase_vocabulary.append(phrase)
+        
+        
+phrase_vocabulary = []
 
-for i in xrange(0,len(phrase_list)):
-    
-    keyword=''
-    for word in phrase_list[i]:
-        keyword += str(word)+" "
-    
-    keyword = keyword.strip()
-    keywords.append(keyword)
+for phrase in phrase_list:
+    if phrase not in phrase_vocabulary:
+        keyword=''
+        for word in phrase:
+            keyword += str(word)+" "
+        phrase_vocabulary.append(phrase)
+        keyword = keyword.strip()
+        keywords.append(keyword)
 ```
 
 ### Ranking Keywords
@@ -366,12 +375,15 @@ for i in xrange(0,len(sentences)):
 
 print "\nSUMMARY: "
 print summary
+
 ```
 
     
     SUMMARY: 
     
     Autotldr is a bot that uses SMMRY to create a TL ; DR/summary.
+    
+    The scenario in which this bot would create a significantly lazy atmosphere is if the tl ; dr were to be presented parallel to the main submission , in the same way the OP 's tl ; dr is presented right next to the long body of self post.
     
     It can make sophisticated topics more relevant to mainstream Reddit Sophisticated and important topics are usually accompanied or presented by long detailed articles.
     
@@ -381,15 +393,6 @@ print summary
     
     It decreases Reddit 's dependency on external sites The bot doubles as a context provider for when a submission link goes down , is removed , or inaccessible at work/school.
     
-    Additionally , an extended summary is posted in /r/autotldr , which acts as a perpetual archive and decreases how much reddit gets broken by external sites.
-    
     The final tl ; dr must also be 70 % smaller than the original , that way there is a big gap between the original and the tl ; dr , hence only very long articles get posted on.
     
     
-
-
-
-```python
-
-
-```
