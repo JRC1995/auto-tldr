@@ -5,7 +5,7 @@ This is a simple implementation of extractive summarization based on the keyword
 
 The implementation is inspired from http://smmry.com/about (which I recently discovered through [auto-tl;dr Reddit bot](https://www.reddit.com/user/autotldr) - which too I discovered recently at r/machine-learning). 
 
-The high level description of the algorithm in http://smmry.com/about seemed pretty simple, and I wanted to try implementing it myself. After recently implementing RAKE, I already had codes for keyword extraction. With keyword extraction being settled, generating simplistic keyword-based extractive summarization is only a bit more work. 
+The high level description of the algorithm in http://smmry.com/about seemed pretty simple, and I wanted to try implementing it myself. After recently implemented RAKE recently, I already had codes for keyword extraction. With keyword extraction being settled, generating simplistic keyword-based extractive summarization is only a bit more work. 
 
 Here's a sample summarization executed by this implementation:
 
@@ -37,6 +37,8 @@ Feel free to respond to these concepts and to raise your own. Be polite, respect
 
 Autotldr is a bot that uses SMMRY to create a TL ; DR/summary.
 
+The scenario in which this bot would create a significantly lazy atmosphere is if the tl ; dr were to be presented parallel to the main submission , in the same way the OP 's tl ; dr is presented right next to the long body of self post.
+
 It can make sophisticated topics more relevant to mainstream Reddit Sophisticated and important topics are usually accompanied or presented by long detailed articles.
 
 By making these articles and topics relevant to a larger portion of the Reddit userbase ( those who were n't willing to read the full article ) , it popularizes the topic and increases user participation.
@@ -44,10 +46,6 @@ By making these articles and topics relevant to a larger portion of the Reddit u
 This has the potential of re-sophisticating the topic discussion in the mainstream subreddits , as more hardcore redditors do n't have to retreat to a safe haven like /r/TrueReddit.
 
 It decreases Reddit 's dependency on external sites The bot doubles as a context provider for when a submission link goes down , is removed , or inaccessible at work/school.
-
-Additionally , an extended summary is posted in /r/autotldr , which acts as a perpetual archive and decreases how much reddit gets broken by external sites.
-
-The final tl ; dr must also be 70 % smaller than the original , that way there is a big gap between the original and the tl ; dr , hence only very long articles get posted on.
 
 
 ### Here starts the code:
@@ -360,9 +358,7 @@ current_size = 0
 if 0 not in indices_for_summary_results and summary_size!=1:
     summary+=sentences[0]
     summary+=".\n\n"
-    #current_size+=1
-else:
-    summary_size+=1
+    current_size+=1
 
 
 for i in xrange(0,len(sentences)):
@@ -392,7 +388,5 @@ print summary
     This has the potential of re-sophisticating the topic discussion in the mainstream subreddits , as more hardcore redditors do n't have to retreat to a safe haven like /r/TrueReddit.
     
     It decreases Reddit 's dependency on external sites The bot doubles as a context provider for when a submission link goes down , is removed , or inaccessible at work/school.
-    
-    The final tl ; dr must also be 70 % smaller than the original , that way there is a big gap between the original and the tl ; dr , hence only very long articles get posted on.
     
     
