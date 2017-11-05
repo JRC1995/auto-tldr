@@ -5,7 +5,7 @@ This is a simple implementation of extractive summarization based on the keyword
 
 The implementation is inspired from http://smmry.com/about (which I recently discovered through [auto-tl;dr Reddit bot](https://www.reddit.com/user/autotldr) - which too I discovered recently at r/machine-learning). 
 
-The high level description of the algorithm in http://smmry.com/about seemed pretty simple, and I wanted to try implementing it myself. After recently implemented RAKE recently, I already had codes for keyword extraction. With keyword extraction being settled, generating simplistic keyword-based extractive summarization is only a bit more work. 
+The high level description of the algorithm in http://smmry.com/about seemed pretty simple, and I wanted to try implementing it myself. After recently implementing RAKE, I already had codes for keyword extraction. With keyword extraction being settled, generating simplistic keyword-based extractive summarization is only a bit more work. 
 
 Here's a sample summarization executed by this implementation:
 
