@@ -1,7 +1,7 @@
 
 ## Extractive Summarization based on keywords extracted using RAKE
 
-This is a simple implementation of extractive summarization based on the keywords extracted by RAKE -Rapid Automatic Keyword Extraction. rAKE is introduced in the paper mentioned below. 
+This is a simple implementation of extractive summarization based on the keywords extracted by RAKE -Rapid Automatic Keyword Extraction. RAKE is introduced in the paper mentioned below. 
 
 [Rose, Stuart & Engel, Dave & Cramer, Nick & Cowley, Wendy. (2010). Automatic Keyword Extraction from Individual Documents. Text Mining: Applications and Theory. 1 - 20. 10.1002/9780470689646.ch1.](https://www.researchgate.net/publication/227988510_Automatic_Keyword_Extraction_from_Individual_Documents)
 
